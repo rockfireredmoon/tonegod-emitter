@@ -8,8 +8,9 @@
 	<artifactId>tonegod-emitter</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<properties>
-		<jmonkey.version>3.0.10</jmonkey.version>
+		<jmonkey.version>3.1.0-stable</jmonkey.version>
 	</properties>
+	<packaging>pom</packaging>
 	<build>
 		<plugins>
 			<plugin>
@@ -44,12 +45,16 @@
 	</distributionManagement>
 	<dependencies>
 		<dependency>
-			<groupId>com.jme3</groupId>
+			<groupId>org.jmonkeyengine</groupId>
 			<artifactId>jme3-desktop</artifactId>
 			<version>${jmonkey.version}</version>
 		</dependency>
 
 	</dependencies>
+	<modules>
+		<module>tonegod-emitter-core</module>
+		<module>tonegod-emitter-ogre-compat</module>
+	</modules>
 	<repositories>
 		<!-- JME3 itself is here -->
 		<repository>
@@ -58,7 +63,7 @@
 			</snapshots>
 			<id>bintray-jmonkeyengine-com.jme3</id>
 			<name>bintray</name>
-			<url>http://dl.bintray.com/jmonkeyengine/com.jme3</url>
+			<url>https://dl.bintray.com/jmonkeyengine/org.jmonkeyengine/</url>
 		</repository>
 	</repositories>
 </project>
