@@ -34,6 +34,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 
+import org.icebeans.FloatRange;
+import org.icebeans.Property;
+
 import com.jme3.export.InputCapsule;
 import com.jme3.export.JmeExporter;
 import com.jme3.export.JmeImporter;
@@ -80,10 +83,13 @@ public class ScalerAffector extends AbstractOGREParticleAffector {
 	public void reset(ParticleData p) {
 	}
 
+	@Property(label = "Rate", weight = 10)
+	@FloatRange(min = -Float.MAX_VALUE)
 	public float getRate() {
 		return rate;
 	}
 
+	@Property
 	public void setRate(float rate) {
 		this.rate = rate;
 	}

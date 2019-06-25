@@ -34,6 +34,8 @@ import java.io.PrintWriter;
 import java.text.ParseException;
 import java.util.logging.Logger;
 
+import org.icebeans.Property;
+
 import com.jme3.math.Vector2f;
 import com.jme3.scene.shape.Torus;
 
@@ -49,10 +51,12 @@ public class RingEmitter extends Abstract3DEmitter {
 		super(group);
 	}
 
+	@Property(label = "Inner Size", weight = 25, hint = Property.Hint.SCALE)
 	public Vector2f getInnerSize() {
 		return innerSize;
 	}
 
+	@Property
 	public void setInnerSize(Vector2f innerSize) {
 		this.innerSize = innerSize;
 	}

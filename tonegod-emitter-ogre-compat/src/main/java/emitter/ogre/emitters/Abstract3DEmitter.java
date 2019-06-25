@@ -33,6 +33,9 @@ package emitter.ogre.emitters;
 import java.io.PrintWriter;
 import java.text.ParseException;
 
+import org.icebeans.FloatRange;
+import org.icebeans.Property;
+
 import com.jme3.math.Vector3f;
 
 import emitter.ogre.AbstractOGREParticleEmitter;
@@ -46,10 +49,13 @@ public abstract class Abstract3DEmitter extends AbstractOGREParticleEmitter {
 		super(group);
 	}
 
+    @Property(label = "Size", weight = 15, hint = Property.Hint.SCALE)
+    @FloatRange(incr = 0.1f, precision = 3)
 	public Vector3f getSize() {
 		return size;
 	}
 
+	@Property
 	public void setSize(Vector3f size) {
 		this.size = size;
 	}

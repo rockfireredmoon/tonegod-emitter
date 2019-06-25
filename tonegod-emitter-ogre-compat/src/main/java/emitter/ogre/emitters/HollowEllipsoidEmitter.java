@@ -34,6 +34,9 @@ import java.io.PrintWriter;
 import java.text.ParseException;
 import java.util.logging.Logger;
 
+import org.icebeans.FloatRange;
+import org.icebeans.Property;
+
 import com.jme3.math.Vector3f;
 import com.jme3.scene.shape.Torus;
 
@@ -49,10 +52,13 @@ public class HollowEllipsoidEmitter extends Abstract3DEmitter {
 		super(group);
 	}
 
+	@Property(label = "Inner Size", weight = 25, hint = Property.Hint.SCALE)
+	@FloatRange(incr = 0.1f)
 	public Vector3f getInnerSize() {
 		return innerSize;
 	}
 
+	@Property
 	public void setInnerSize(Vector3f innerSize) {
 		this.innerSize = innerSize;
 	}

@@ -34,6 +34,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 
+import org.icebeans.FloatRange;
+import org.icebeans.Property;
+import org.icebeans.Property.Hint;
+
 import com.jme3.export.InputCapsule;
 import com.jme3.export.JmeExporter;
 import com.jme3.export.JmeImporter;
@@ -87,26 +91,34 @@ public class ColourFader2Affector extends AbstractOGREParticleAffector {
 		p.setData("aliveTime", 0f);
 	}
 
+    @Property(label = "Adjustment 1", weight = 10, hint = Hint.RGBA)
+    @FloatRange(min = -Float.MAX_VALUE, incr = 0.01f)
 	public Vector4f getAdjustment1() {
 		return adjustment1;
 	}
 
+    @Property
 	public void setAdjustment1(Vector4f adjustment1) {
 		this.adjustment1 = adjustment1;
 	}
 
+    @Property(label = "State Change", weight = 20)
 	public float getStateChange() {
 		return stateChange;
 	}
 
+    @Property
 	public void setStateChange(float stateChange) {
 		this.stateChange = stateChange;
 	}
 
+    @Property(label = "Adjustment 2", weight = 30, hint = Hint.RGBA)
+    @FloatRange(min = -Float.MAX_VALUE, incr = 0.01f)
 	public Vector4f getAdjustment2() {
 		return adjustment2;
 	}
 
+    @Property
 	public void setAdjustment2(Vector4f adjustment2) {
 		this.adjustment2 = adjustment2;
 	}

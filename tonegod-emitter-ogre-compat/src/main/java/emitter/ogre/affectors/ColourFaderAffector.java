@@ -34,6 +34,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 
+import org.icebeans.FloatRange;
+import org.icebeans.Property;
+import org.icebeans.Property.Hint;
+
 import com.jme3.export.InputCapsule;
 import com.jme3.export.JmeExporter;
 import com.jme3.export.JmeImporter;
@@ -77,10 +81,13 @@ public class ColourFaderAffector extends AbstractOGREParticleAffector {
 	public void reset(ParticleData p) {
 	}
 
+    @Property
 	public Vector4f getAdjustment() {
 		return adjustment;
 	}
 
+    @Property(label = "Adjustment", weight = 10, hint = Hint.RGBA)
+    @FloatRange(min = -Float.MAX_VALUE, incr = 0.01f)
 	public void setAdjustment(Vector4f adjustment) {
 		this.adjustment = adjustment;
 	}
@@ -115,7 +122,7 @@ public class ColourFaderAffector extends AbstractOGREParticleAffector {
 	}
 
 	@Override
-	public Class getInfluencerClass() {
+	public Class<?> getInfluencerClass() {
 		return ColourFaderAffector.class;
 	}
 

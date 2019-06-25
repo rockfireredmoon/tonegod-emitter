@@ -35,6 +35,9 @@ import java.io.PrintWriter;
 import java.text.ParseException;
 import java.util.logging.Logger;
 
+import org.icebeans.FloatRange;
+import org.icebeans.Property;
+
 import com.jme3.export.JmeExporter;
 import com.jme3.export.JmeImporter;
 import com.jme3.math.FastMath;
@@ -111,26 +114,34 @@ public class DeflectorPlaneAffector extends AbstractOGREParticleAffector {
 		return clone;
 	}
 
+	@Property(label = "Plane Point", weight = 10)
+	@FloatRange(min = -Float.MAX_VALUE)
 	public Vector3f getPlanePoint() {
 		return planePoint;
 	}
 
+	@Property
 	public void setPlanePoint(Vector3f planePoint) {
 		this.planePoint = planePoint;
 	}
 
+	@Property(label = "Plane Normal", weight = 20)
+	@FloatRange(min = -Float.MAX_VALUE)
 	public Vector3f getPlaneNormal() {
 		return planeNormal;
 	}
 
+	@Property
 	public void setPlaneNormal(Vector3f planeNormal) {
 		this.planeNormal = planeNormal;
 	}
 
+	@Property(label = "Bounce", weight = 30)
 	public float getBounce() {
 		return bounce;
 	}
 
+	@Property
 	public void setBounce(float bounce) {
 		this.bounce = bounce;
 	}

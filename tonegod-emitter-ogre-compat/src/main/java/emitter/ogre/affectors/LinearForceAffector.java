@@ -36,6 +36,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 
+import org.icebeans.FloatRange;
+import org.icebeans.Property;
+
 import com.jme3.export.InputCapsule;
 import com.jme3.export.JmeExporter;
 import com.jme3.export.JmeImporter;
@@ -95,10 +98,13 @@ public class LinearForceAffector extends AbstractOGREParticleAffector {
 	public void reset(ParticleData p) {
 	}
 
+	@Property(label = "Force", weight = 10)
+	@FloatRange(min = -Float.MAX_VALUE)
 	public Vector3f getForce() {
 		return force;
 	}
 
+	@Property
 	public void setForce(Vector3f force) {
 		this.force = force;
 	}

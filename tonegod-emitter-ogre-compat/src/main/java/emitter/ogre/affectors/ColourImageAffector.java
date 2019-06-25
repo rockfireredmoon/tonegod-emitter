@@ -35,6 +35,9 @@ import java.io.PrintWriter;
 import java.nio.ByteBuffer;
 import java.text.ParseException;
 
+import org.icebeans.ChooserInfo;
+import org.icebeans.Property;
+
 import com.jme3.export.JmeExporter;
 import com.jme3.export.JmeImporter;
 import com.jme3.texture.Image;
@@ -101,10 +104,13 @@ public class ColourImageAffector extends AbstractOGREParticleAffector {
 	public void reset(ParticleData p) {
 	}
 
+	@Property
 	public String getImage() {
 		return image;
 	}
 
+	@ChooserInfo(root = "Textures/Effects", pattern = "Textures/Effects/.*")
+	@Property(label = "Image", weight = 10, hint = Property.Hint.TEXTURE_PATH)
 	public void setImage(String image) {
 		this.image = image;
 	}

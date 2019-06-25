@@ -37,11 +37,13 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.text.ParseException;
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.jme3.asset.AssetKey;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
 
@@ -65,10 +67,26 @@ public class OGREParticleConfiguration {
 	private OGREParticleAffector affector;
 	private boolean skipToNextBrace;
 	private Map<String, OGREParticleScript> scripts = new LinkedHashMap<String, OGREParticleScript>();
+	private AssetKey<OGREParticleConfiguration> assetKey;
 
 	enum State {
 
 		OUTTER, PARTICLE_SYSTEM, EMITTER, AFFECTOR
+	}
+
+	public OGREParticleConfiguration() {
+	}
+
+	public OGREParticleConfiguration(AssetKey<OGREParticleConfiguration> assetKey) {
+		this.assetKey = assetKey;
+	}
+
+	public AssetKey<OGREParticleConfiguration> getAssetKey() {
+		return assetKey;
+	}
+
+	public String getConfigurationName() {
+		return assetKey == null ? null : assetKey.getName().substring(assetKey.getFolder().length());
 	}
 
 	public void addScript(OGREParticleScript script) {
@@ -77,6 +95,18 @@ public class OGREParticleConfiguration {
 
 	public void removeScript(OGREParticleScript script) {
 		scripts.remove(script.getName());
+	}
+
+	public boolean hasScript(String name) {
+		return scripts.containsKey(name);
+	}
+
+	public Collection<String> getScriptNames() {
+		return scripts.keySet();
+	}
+
+	public Collection<OGREParticleScript> getScripts() {
+		return scripts.values();
 	}
 
 	public OGREParticleScript getScript(String name) {

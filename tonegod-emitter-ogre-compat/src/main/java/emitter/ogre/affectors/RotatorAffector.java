@@ -34,6 +34,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 
+import org.icebeans.FloatRange;
+import org.icebeans.Property;
+
 import com.jme3.export.InputCapsule;
 import com.jme3.export.JmeExporter;
 import com.jme3.export.JmeImporter;
@@ -82,34 +85,46 @@ public class RotatorAffector extends AbstractOGREParticleAffector {
 	public void reset(ParticleData p) {
 	}
 
+	@Property(label = "Speed Start", weight = 10)
+	@FloatRange(min = -Float.MAX_VALUE)
 	public float getSpeedRangeStart() {
 		return speedRangeStart;
 	}
 
+	@Property(label = "Speed End", weight = 20)
+	@FloatRange(min = -Float.MAX_VALUE)
 	public float getSpeedRangeEnd() {
 		return speedRangeEnd;
 	}
 
+	@Property(label = "Range Start", weight = 20, hint = Property.Hint.ANGLE)
+	@FloatRange(min = -Float.MAX_VALUE)
 	public float getRangeStart() {
 		return rangeStart;
 	}
 
+	@Property(label = "Range End", weight = 20, hint = Property.Hint.ANGLE)
+	@FloatRange(min = -Float.MAX_VALUE)
 	public float getRangeEnd() {
 		return rangeEnd;
 	}
 
+	@Property
 	public void setSpeedRangeStart(float speedRangeStart) {
 		this.speedRangeStart = speedRangeStart;
 	}
 
+	@Property
 	public void setSpeedRangeEnd(float speedRangeEnd) {
 		this.speedRangeEnd = speedRangeEnd;
 	}
 
+	@Property
 	public void setRangeStart(float rangeStart) {
 		this.rangeStart = rangeStart;
 	}
 
+	@Property
 	public void setRangeEnd(float rangeEnd) {
 		this.rangeEnd = rangeEnd;
 	}

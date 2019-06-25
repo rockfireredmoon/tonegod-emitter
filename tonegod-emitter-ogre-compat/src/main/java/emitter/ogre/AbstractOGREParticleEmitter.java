@@ -37,6 +37,9 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.logging.Logger;
 
+import org.icebeans.FloatRange;
+import org.icebeans.Property;
+
 import com.jme3.asset.AssetManager;
 import com.jme3.asset.AssetNotFoundException;
 import com.jme3.math.ColorRGBA;
@@ -92,18 +95,22 @@ public abstract class AbstractOGREParticleEmitter implements OGREParticleEmitter
 		changeSupport.removePropertyChangeListener(listener);
 	}
 
+	@Property
 	public void setParticlesPerSec(float particlesPerSec) {
 		this.particlesPerSec = particlesPerSec;
 	}
 
+	@Property
 	public void setLocalTranslation(Vector3f localTranslation) {
 		this.localTranslation = localTranslation;
 	}
 
+	@Property
 	public void setDirection(Vector3f direction) {
 		this.direction = direction;
 	}
 
+	@Property
 	public void setAngle(float angle) {
 		this.angle = angle;
 	}
@@ -112,10 +119,12 @@ public abstract class AbstractOGREParticleEmitter implements OGREParticleEmitter
 		velocityMin = velocityMax = velocity;
 	}
 
+	@Property
 	public void setVelocityMin(float velocityMin) {
 		this.velocityMin = velocityMin;
 	}
 
+	@Property
 	public void setVelocityMax(float velocityMax) {
 		this.velocityMax = velocityMax;
 	}
@@ -125,10 +134,12 @@ public abstract class AbstractOGREParticleEmitter implements OGREParticleEmitter
 		setLowLife(timeToLive);
 	}
 
+	@Property
 	public void setLowLife(float lowLife) {
 		this.lowLife = lowLife;
 	}
 
+	@Property
 	public void setHighLife(float highLife) {
 		this.highLife = highLife;
 	}
@@ -139,11 +150,13 @@ public abstract class AbstractOGREParticleEmitter implements OGREParticleEmitter
 		durationSet = true;
 	}
 
+	@Property
 	public void setDurationMin(float durationMin) {
 		this.durationMin = durationMin;
 		durationSet = true;
 	}
 
+	@Property
 	public void setDurationMax(float durationMax) {
 		this.durationMax = durationMax;
 		durationSet = true;
@@ -154,74 +167,93 @@ public abstract class AbstractOGREParticleEmitter implements OGREParticleEmitter
 		this.repeatDelayMin = repeatDelay;
 	}
 
+	@Property
 	public void setRepeatDelayMin(float repeatDelayMin) {
 		this.repeatDelayMin = repeatDelayMin;
 	}
 
+	@Property
 	public void setRepeatDelayMax(float repeatDelayMax) {
 		this.repeatDelayMax = repeatDelayMax;
 	}
 
+	@Property(label = "Particles Per Sec.", weight = 10)
 	public float getParticlesPerSec() {
 		return particlesPerSec;
 	}
 
+	@Property(label = "Position", weight = 20, hint = Property.Hint.WORLD_POSITION)
 	public Vector3f getLocalTranslation() {
 		return localTranslation;
 	}
 
+	@Property(label = "Direction", weight = 30, hint = Property.Hint.DIRECTION)
+	@FloatRange(min = -1, max = 1, incr = 0.1f)
 	public Vector3f getDirection() {
 		return direction;
 	}
 
+	@Property(label = "Angle", weight = 40, hint = Property.Hint.ROTATION_DEGREES)
 	public float getAngle() {
 		return angle;
 	}
 
+	@Property(label = "Velocity Min.", weight = 50)
 	public float getVelocityMin() {
 		return velocityMin;
 	}
 
+	@Property(label = "Velocity Max.", weight = 60)
 	public float getVelocityMax() {
 		return velocityMax;
 	}
 
+	@Property(label = "Life Min.", weight = 70)
 	public float getLowLife() {
 		return lowLife;
 	}
 
+	@Property(label = "Life Max.", weight = 80)
 	public float getHighLife() {
 		return highLife;
 	}
 
+	@Property(label = "Duration Min.", weight = 90)
 	public float getDurationMin() {
 		return durationMin;
 	}
 
+	@Property(label = "Duration Max.", weight = 100)
 	public float getDurationMax() {
 		return durationMax;
 	}
 
+	@Property(label = "Max Rpt Delay", weight = 120)
 	public float getRepeatDelayMax() {
 		return repeatDelayMax;
 	}
 
+	@Property(label = "Min Rpt Delay", weight = 110)
 	public float getRepeatDelayMin() {
 		return repeatDelayMin;
 	}
 
+	@Property(label = "Start Colour", weight = 130)
 	public ColorRGBA getStartColour() {
 		return startColour;
 	}
 
+	@Property(label = "End Colour", weight = 130)
 	public ColorRGBA getEndColour() {
 		return endColour;
 	}
 
+	@Property
 	public void setEndColour(ColorRGBA endColour) {
 		this.endColour = endColour;
 	}
 
+	@Property
 	public void setStartColour(ColorRGBA startColour) {
 		this.startColour = startColour;
 	}
@@ -247,8 +279,8 @@ public abstract class AbstractOGREParticleEmitter implements OGREParticleEmitter
 			if (script.getMaterialName() != null) {
 				try {
 					LOG.info(String.format(" Material: %s", script.getMaterialName()));
-					ParticleMaterial mat = ParticleMaterialFactory.get()
-							.createParticleMaterial(assetManager, script.getMaterialName(), this);
+					ParticleMaterial mat = ParticleMaterialFactory.get().createParticleMaterial(assetManager,
+							script.getMaterialName(), this);
 					if (mat != null) {
 						emitter.setMaterial(mat.getMaterial(), mat.getUniformName());
 					} else {
@@ -362,11 +394,10 @@ public abstract class AbstractOGREParticleEmitter implements OGREParticleEmitter
 			// emitter.setBillboardMode(Emitter.BillboardMode.UNIT_Y);
 		} else if (script.getBillboardType().equals(OGREParticleScript.BillboardType.ORIENTED_SELF)) {
 			/*
-			 * Particles are oriented around their own direction vector, which
-			 * acts as their local Y axis. As the particle changes direction, so
-			 * the billboard reorients itself to face this way. Good for laser
-			 * fire, fireworks and other ’streaky’ particles that should look
-			 * like they are traveling in their own direction.
+			 * Particles are oriented around their own direction vector, which acts as their
+			 * local Y axis. As the particle changes direction, so the billboard reorients
+			 * itself to face this way. Good for laser fire, fireworks and other ’streaky’
+			 * particles that should look like they are traveling in their own direction.
 			 */
 			emitter.setBillboardMode(Emitter.BillboardMode.Oriented_Self);
 		} else if (script.getBillboardType().equals(OGREParticleScript.BillboardType.PERPENDICULAR_SELF)) {

@@ -42,7 +42,8 @@ public class OGREParticleLoader implements AssetLoader {
 
 	@Override
 	public Object load(AssetInfo assetInfo) throws IOException {
-		OGREParticleConfiguration cfg = new OGREParticleConfiguration();
+		@SuppressWarnings("unchecked")
+		OGREParticleConfiguration cfg = new OGREParticleConfiguration(assetInfo.getKey());
 		InputStream openStream = assetInfo.openStream();
 		try {
 			cfg.load(openStream);

@@ -34,6 +34,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 
+import org.icebeans.Property;
+
 import com.jme3.export.JmeExporter;
 import com.jme3.export.JmeImporter;
 import com.jme3.math.FastMath;
@@ -59,26 +61,32 @@ public class DirectionRandomiserAffector extends AbstractOGREParticleAffector {
 		super(script);
 	}
 
+	@Property(label = "Keep Velocity", weight = 10)
 	public boolean isKeepVelocity() {
 		return keepVelocity;
 	}
 
+	@Property
 	public void setKeepVelocity(boolean keepVelocity) {
 		this.keepVelocity = keepVelocity;
 	}
 
+	@Property(label = "Randomness", weight = 20)
 	public float getRandomness() {
 		return randomness;
 	}
 
+	@Property
 	public void setRandomness(float randomness) {
 		this.randomness = randomness;
 	}
 
+	@Property(label = "Scope", weight = 30)
 	public float getScope() {
 		return scope;
 	}
 
+	@Property
 	public void setScope(float scope) {
 		this.scope = scope;
 	}

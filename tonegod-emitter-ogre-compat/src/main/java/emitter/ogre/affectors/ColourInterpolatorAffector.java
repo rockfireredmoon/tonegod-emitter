@@ -37,6 +37,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.icebeans.Property;
+import org.icebeans.Property.Hint;
+
 import com.jme3.export.InputCapsule;
 import com.jme3.export.JmeExporter;
 import com.jme3.export.JmeImporter;
@@ -154,98 +157,122 @@ public class ColourInterpolatorAffector extends AbstractOGREParticleAffector {
 		colours.get(index).set(parseColour);
 	}
 
+    @Property(label = "Colour 0", weight = 10)
 	public void setColour0(ColorRGBA color) {
 		setColour(0, color);
 	}
-
+    
+    @Property
 	public ColorRGBA getColour0() {
 		return colours.get(0);
 	}
 
+    @Property(label = "Time 0", weight = 20, hint = Hint.SMALL_SECOND_TIME)
 	public void setTime0(float time) {
 		setTime(0, time);
 	}
 
+    @Property
 	public float getTime0() {
 		return times.get(0);
 	}
 
+    @Property(label = "Colour 1", weight = 30)
 	public void setColour1(ColorRGBA color) {
 		setColour(1, color);
 	}
 
+    @Property
 	public ColorRGBA getColour1() {
 		return colours.get(1);
 	}
 
+    @Property(label = "Time 1", weight = 40, hint = Hint.SMALL_SECOND_TIME)
 	public void setTime1(float time) {
 		setTime(1, time);
 	}
 
+    @Property
 	public float getTime1() {
 		return times.get(1);
 	}
 
+    @Property(label = "Colour 2", weight = 50)
 	public void setColour2(ColorRGBA color) {
 		setColour(2, color);
 	}
 
+    @Property
 	public ColorRGBA getColour2() {
 		return colours.get(2);
 	}
 
+    @Property(label = "Time 2", weight = 60, hint = Hint.SMALL_SECOND_TIME)
 	public void setTime2(float time) {
 		setTime(2, time);
 	}
 
+    @Property
 	public float getTime2() {
 		return times.get(2);
 	}
 
+    @Property(label = "Colour3", weight = 70)
 	public void setColour3(ColorRGBA color) {
 		setColour(3, color);
 	}
 
+    @Property
 	public ColorRGBA getColour3() {
 		return colours.get(3);
 	}
 
+    @Property(label = "Time 3", weight = 80, hint = Hint.SMALL_SECOND_TIME)
 	public void setTime3(float time) {
 		setTime(3, time);
 	}
-
+    
+    @Property
 	public float getTime3() {
 		return times.get(3);
 	}
 
+    @Property(label = "Colour4", weight = 90)
 	public void setColour4(ColorRGBA color) {
 		setColour(4, color);
 	}
 
+    @Property
 	public ColorRGBA getColour4() {
 		return colours.get(4);
 	}
 
+    @Property(label = "Time 4", weight = 100, hint = Hint.SMALL_SECOND_TIME)
 	public void setTime4(float time) {
 		setTime(4, time);
 	}
 
+    @Property
 	public float getTime4() {
 		return times.get(4);
 	}
 
+    @Property(label = "Colour 5", weight = 110)
 	public void setColour5(ColorRGBA color) {
 		setColour(5, color);
 	}
 
+    @Property
 	public ColorRGBA getColour5() {
 		return colours.get(5);
 	}
 
+    @Property(label = "Time 5", weight = 120, hint = Hint.SMALL_SECOND_TIME)
 	public void setTime5(float time) {
 		setTime(5, time);
 	}
 
+    @Property
 	public float getTime5() {
 		return times.get(5);
 	}
